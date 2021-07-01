@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\app.js",
-            "runtimeExecutable": "nodemon",
+            "runtimeExecutable": "${workspaceFolder}\\node_modules\\.bin\\nodemon",
             "console": "integratedTerminal"
         }
     ]
