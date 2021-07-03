@@ -4,10 +4,18 @@ const app = exp();
 const server = http.createServer(app);
 const port = 5000;
 const host = "127.0.0.1";
+const path = require("path");
+const routes = require("./controller/route");
 
 app.use(exp.json());
 app.use(exp.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
+app.set("views", "view");
 
+app.use(routes);
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, "view", "404.html"));
+});
 /* 
 The best way I explain extended true is that not using extended means that 
 curl --data "user[email]=foo&user[password]=bar" localhost:3000/login 
